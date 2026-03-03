@@ -14,6 +14,15 @@ const loadLessons = () => {
     })
 }
 
+
+const removeActive=()=>{
+    const lessonButton= document.querySelectorAll(".lesson-btn")
+    lessonButton.forEach(btn=>{
+        btn.classList.remove("active")
+    })
+
+}
+
 loadLevelWord=(id)=>{
    
     const  url = `https://openapi.programming-hero.com/api/level/${id}`
@@ -23,7 +32,15 @@ loadLevelWord=(id)=>{
     .then(res => res.json())
     .then (data => {
         // console.log(data.data)
-        displayLevelWord(data.data)
+        // remove all active +
+        removeActive() 
+        // btn click korle onno color
+const clickBtn= document.getElementById(`lesson-btn-${id}`)
+// console.log(activeBtn);
+clickBtn.classList.add("active")
+
+displayLevelWord(data.data)
+
     })
 }
 
@@ -31,16 +48,42 @@ const displayLevelWord = (words) =>{
 // console.log(words)
 const wordContainer = document.getElementById('word-container ')
 wordContainer.innerHTML=''
+
+
+
+// 0 word lesson er 
+if(words.length==0){
+    // alert('select another lesson')
+
+    wordContainer.innerHTML=`
+    
+    
+      <div class="text-center font-bangla rounded-xl py-10 col-span-full space-y-6">
+
+      <img src="./assets/alert-error.png" alt="" class= "mx-auto">
+
+    
+        <p class="text-xl font-medium text-gray-400">
+         এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি। 
+        </p>
+        <h2 class="font-bold text-3xl">নেক্সট Lesson এ যান</h2>
+    
+    `
+
+
+
+}
 words.forEach(word =>{
+    
 
     // console.log(word)
 
     const wordCard= document.createElement('div')
     wordCard.innerHTML=`
     <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4 ">
-            <h2 class="font-bold text-2xl">${word.word}</h2>
+            <h2 class="font-bold text-2xl">${word.word ? word.word : "শব্দ পাওয়া যায় নি "}</h2>
             <p class="font-semibold">Meaning /Pronounciation</p>
-           <div class="font-bangla text-2xl font-medium">${word.meaning} / ${word.pronunciation}"</div>
+           <div class="font-bangla text-2xl font-medium">${word.meaning ? word.meaning : " শব্দ অর্থ পাওয়া যায় নি "} / ${word.pronunciation ? word.pronunciation : "পাওয়া যায় নি"  }"</div>
 
            <div class="flex justify-between items-center">
 
@@ -79,7 +122,7 @@ lessons.forEach(lesson => {
     // 3. Create element button
     const divBtn = document.createElement('div')
     divBtn.innerHTML  =`
-       <button onClick ="loadLevelWord(${lesson.level_no})"  class="btn btn-primary btn-outline" >
+       <button id ="lesson-btn-${lesson.level_no}" onClick ="loadLevelWord(${lesson.level_no})"  class="btn lesson-btn  btn-primary btn-outline" >
         <i class="fa-solid fa-book-open"></i>Lesson -${lesson.level_no}
         </button>
     
