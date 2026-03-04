@@ -57,6 +57,7 @@ const loadWordDetail = async(id) =>{
 }
 
 const displayWordDetail=(word)=>{
+
 console.log(word)
 
 const detailsContainer=document.getElementById("details-container")
@@ -225,3 +226,22 @@ const manageSpiner=(status)=>{
 }
 
 loadLessons ()
+
+document.getElementById('search').addEventListener('click', ()=>{
+
+const input =document.getElementById('input');
+const searchValue = input.value.trim().toLowerCase()
+
+
+fetch('https://openapi.programming-hero.com/api/words/all')
+.then(res=> res.json())
+.then(data=>{
+    const allWords=data.data
+    const filterWords =allWords.filter(word=>word.word.toLowerCase().includes(searchValue));
+
+    displayLevelWord(filterWords)
+})
+
+
+
+})
