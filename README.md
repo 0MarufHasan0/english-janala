@@ -3,18 +3,22 @@
 ---
 ​🌐 English Janala – Interactive Vocabulary Learning Web App
 ​English Janala is a modern, interactive web application designed to help users improve their English vocabulary in a simple and engaging way. This project focuses on delivering a smooth user experience while providing essential tools for language learners.
+---
 ​✨ Key Features
 ​📚 Interactive Vocabulary Lessons: Well-structured lessons to help users learn words step-by-step.
 ​🔍 Search Functionality: A powerful search bar to quickly find specific words and their details.
 ​📖 Comprehensive Word Data: Each word includes its Meaning, Pronunciation, Examples, and Synonyms.
 ​📱 Responsive & User-Friendly: Optimized for all devices, including mobile, tablets, and desktops.
 ​❓ FAQ Section: A dedicated section to answer common user queries and guide them through the platform.
+
+---
 ​🛠️ Tech Stack
 ​Built with modern web technologies:
 ​HTML5 – For structured content.
 ​CSS3 – For custom styling and modern UI components.
 ​JavaScript (ES6+) – To handle interactivity and search logic.
-​Responsive Design – Ensuring a seamless experience across all screen sizes.
+​Responsive Design – Ensuring a seamless experience across all screen seizes 
+---
 ​🚀 Links
 ​Check out the project live or dive into the code:
 ​🔗 Live Demo: https://0marufhasan0.github.io/english-janala/
